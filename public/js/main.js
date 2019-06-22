@@ -38,13 +38,18 @@ function inicializaCronometro() {
             tempoRestante--;
             $("#tempo-digitacao").text(tempoRestante);
             if(tempoRestante < 1) {
-                campo.attr("disabled", true);
                 clearInterval(cronometroId);
-                //campo.addClass("campo-desativado");
-                campo.toggleClass("campo-desativado");
+                finalizaJogo();
             }
         }, 1000);
     });
+}
+
+function finalizaJogo() {
+    campo.attr("disabled", true);
+    //campo.addClass("campo-desativado");
+    campo.toggleClass("campo-desativado");
+    inserePlacar();
 }
 
 function reiniciarJogo() {
@@ -75,4 +80,39 @@ function inicializaMarcadores() {
             campo.removeClass("borda-verde");
         }
     });
+}
+
+function inserePlacar() {
+    var corpoTabela = $(".placar").find("tbody");
+    var usuario = "Charles Albert";
+    var nroPalavras = $("#contador-palavras").text();
+    
+    var linha = novaLinha(usuario, nroPalavras);
+    linha.find(".botao-remover").click(removeLinha);
+
+    corpoTabela.prepend(linha);
+}
+
+function novaLinha(usuario, nroPalavras)  {
+    var linha = $("<tr>");
+    var colunaUsuario = $("<td>").text(usuario);
+    var colunaPalavras = $("<td>").text(nroPalavras);
+    var colunaRemover = $("<td>");
+    var link = $("<a>");
+    link.addClass("botao-remover").attr("href", "#");
+    var icone = $("<i>");
+    icone.addClass("small").addClass("material-icons").text("delete");
+    
+    link.append(icone);
+    colunaRemover.append(link);
+    linha.append(colunaUsuario);
+    linha.append(colunaPalavras);
+    linha.append(colunaRemover);
+
+    return linha;
+}
+
+function removeLinha() {
+    event.preventDefault();
+    $(this).parent().parent().remove();
 }
