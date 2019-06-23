@@ -17,8 +17,6 @@ function atualizaTamanhoFrase() {
     var tamanhoFrase = $("#tamanho-frase").text(nroPalavras);
 }
 
-
-
 function inicializaContadores() {
     campo.on("input", function() {
         var conteudo = campo.val();
@@ -80,39 +78,4 @@ function inicializaMarcadores() {
             campo.removeClass("borda-verde");
         }
     });
-}
-
-function inserePlacar() {
-    var corpoTabela = $(".placar").find("tbody");
-    var usuario = "Charles Albert";
-    var nroPalavras = $("#contador-palavras").text();
-    
-    var linha = novaLinha(usuario, nroPalavras);
-    linha.find(".botao-remover").click(removeLinha);
-
-    corpoTabela.prepend(linha);
-}
-
-function novaLinha(usuario, nroPalavras)  {
-    var linha = $("<tr>");
-    var colunaUsuario = $("<td>").text(usuario);
-    var colunaPalavras = $("<td>").text(nroPalavras);
-    var colunaRemover = $("<td>");
-    var link = $("<a>");
-    link.addClass("botao-remover").attr("href", "#");
-    var icone = $("<i>");
-    icone.addClass("small").addClass("material-icons").text("delete");
-    
-    link.append(icone);
-    colunaRemover.append(link);
-    linha.append(colunaUsuario);
-    linha.append(colunaPalavras);
-    linha.append(colunaRemover);
-
-    return linha;
-}
-
-function removeLinha() {
-    event.preventDefault();
-    $(this).parent().parent().remove();
 }
