@@ -1,6 +1,7 @@
 var tempoInicial = $("#tempo-digitacao").text();
 var campo = $('.campo-digitacao');
 
+
 //$(document).ready(function)
 $( function() {
         atualizaTamanhoFrase();
@@ -8,6 +9,7 @@ $( function() {
         inicializaCronometro();
         $("#botao-reiniciar").click(reiniciarJogo);
         inicializaMarcadores();
+        atualizaPlacar();
 });
 
 function atualizaTamanhoFrase() {
