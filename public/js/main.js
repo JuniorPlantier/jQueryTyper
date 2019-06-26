@@ -4,12 +4,19 @@ var campo = $('.campo-digitacao');
 
 //$(document).ready(function)
 $( function() {
-        atualizaTamanhoFrase();
-        inicializaContadores();
-        inicializaCronometro();
-        $("#botao-reiniciar").click(reiniciarJogo);
-        inicializaMarcadores();
-        atualizaPlacar();
+    atualizaTamanhoFrase();
+    inicializaContadores();
+    inicializaCronometro();
+    $("#botao-reiniciar").click(reiniciarJogo);
+    inicializaMarcadores();
+    atualizaPlacar();
+    $("#usuarios").selectize({
+        create: true,
+        sortField: 'text'
+    });
+    $(".tooltip").tooltipster({
+        trigger: "custom"
+    });
 });
 
 function atualizaTamanhoFrase() {

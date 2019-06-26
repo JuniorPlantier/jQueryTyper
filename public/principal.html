@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
 	<title>Plantier Typer</title>
-	<link rel="stylesheet" href="css/libs/materialize.min.css">
-	<link rel="stylesheet" href="css/libs/google-fonts.css">
+	<link rel="stylesheet" href="css/libs/materialize.min.css" />
+	<link rel="stylesheet" href="css/libs/google-fonts.css" />
+	<link rel="stylesheet" href="css/libs/selectize.default.css" />
+	<link rel="stylesheet" href="css/libs/tooltipster.bundle.min.css" />
+
 	<link rel="stylesheet" href="css/estilos.css">
 
 	<!-- https://stackoverflow.com/questions/31075893/im-getting-favicon-ico-error -->
@@ -46,7 +49,16 @@
 			<i class="material-icons">repeat_one</i>
 		</a>
 		<input type="number" id="frase-id" min=0 />
-		<a class="btn-floating btn-large waves-effect waves-light yellow" id="botao-sync">
+
+		<div class="select-usuario">
+			<select id="usuarios">
+				<option value="Junior">Junior</option>
+				<option value="Juliana">Juliana</option>
+				<option value="Fernanda">Fernanda</option>
+			</select>
+		</div>
+
+		<a class="tooltip btn-floating btn-large waves-effect waves-light yellow" id="botao-sync" title="Sincronizado com sucesso!">
 			<i class="material-icons">swap_ver</i>
 		</a>
 	</div>
@@ -77,5 +89,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/placar.js"></script>
 	<script src="js/frase.js"></script>
+	<script src="js/selectize.js"></script>
+	<script src="js/tooltipster.bundle.min.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ $("#botao-sync").click(sincronizaPlacar);
 
 function inserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
-    var usuario = "Charles Albert";
+    var usuario = $("#usuarios").val();
     var nroPalavras = $("#contador-palavras").text();
     
     var linha = novaLinha(usuario, nroPalavras);
@@ -74,6 +74,13 @@ function sincronizaPlacar() {
     };
     $.post("http://localhost:3000/placar", dados, function() {
         console.log("Salvou!!!!!");
+        $(".tooltip").tooltipster("open").tooltipster("content", "Sucesso ao sincronizar");
+    }).always(function() {
+        setTimeout(function() {
+            $(".tooltip").tooltipster("close");
+        }, 2000);
+    }).fail(function() {
+        $(".tooltip").tooltipster("open").tooltipster("content", "Falha ao sincronizar");
     });
 }
 
